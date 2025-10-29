@@ -111,8 +111,8 @@
             width: 600px;
             height: 600px;
             z-index: 0;
-            opacity: 0.15;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><ellipse cx="200" cy="200" rx="180" ry="160" fill="none" stroke="%238B5CF6" stroke-width="3" opacity="0.6"/><ellipse cx="200" cy="200" rx="200" ry="180" fill="none" stroke="%239C88FF" stroke-width="2" opacity="0.4"/><ellipse cx="200" cy="200" rx="220" ry="200" fill="none" stroke="%236366F1" stroke-width="2" opacity="0.3"/><text x="200" y="170" font-family="Arial Black" font-size="80" font-weight="900" fill="%23EC4899" text-anchor="middle" opacity="0.2">BLOW</text><text x="200" y="240" font-family="Arial" font-size="40" fill="%23ff9800" text-anchor="middle" opacity="0.2">DANCE</text></svg>') center/contain no-repeat;
+            opacity: 0.25;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><ellipse cx="200" cy="200" rx="180" ry="160" fill="none" stroke="%238B5CF6" stroke-width="3" opacity="0.8"/><ellipse cx="200" cy="200" rx="200" ry="180" fill="none" stroke="%239C88FF" stroke-width="2" opacity="0.6"/><ellipse cx="200" cy="200" rx="220" ry="200" fill="none" stroke="%236366F1" stroke-width="2" opacity="0.5"/><text x="200" y="170" font-family="Arial Black" font-size="80" font-weight="900" fill="%23EC4899" text-anchor="middle" opacity="0.3">BLOW</text><text x="200" y="240" font-family="Arial" font-size="40" fill="%23ff9800" text-anchor="middle" opacity="0.3">DANCE</text></svg>') center/contain no-repeat;
         }
 
         .hero::after {
@@ -124,7 +124,7 @@
             font-family: 'Arial', sans-serif;
             font-size: 24px;
             color: #ff9800;
-            opacity: 0.1;
+            opacity: 0.15;
             white-space: nowrap;
             z-index: 0;
             letter-spacing: 4px;
@@ -501,12 +501,28 @@
                 <span class="logo-small">BLOW DANCE</span>
                 <span class="logo-subtitle">ESPACIO CREATIVO</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#videos">Videos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <div class="social-links" style="margin: 0; gap: 0.8rem;">
+                    <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" class="social-btn" title="Facebook" style="width: 35px; height: 35px;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" class="social-btn" title="Instagram" style="width: 35px; height: 35px;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="social-btn" title="YouTube" style="width: 35px; height: 35px;">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@blow.dance" target="_blank" class="social-btn" title="TikTok" style="width: 35px; height: 35px;">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#videos">Videos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -587,56 +603,41 @@
         <div class="contact-grid">
             <div class="contact-left">
                 <div class="contact-info">
-                    <div class="contact-card">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Erasmie+478,+Oberá,+Misiones+3360" target="_blank" class="contact-card" style="text-decoration: none; color: inherit;">
                         <i class="fas fa-map-marker-alt"></i>
                         <div style="flex: 1;">
                             <strong>Dirección</strong><br>
                             <span style="color: var(--text-gray);">Erasmie 478, Oberá, Misiones 3360</span>
                             <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Erasmie+478,+Oberá,+Misiones+3360" target="_blank" title="Ver en Google Maps" style="background: var(--primary-color);"><i class="fas fa-map-marked-alt"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-card">
+                    </a>
+                    <a href="https://wa.me/5493755646531?text=Hola!%20Quiero%20consultar%20sobre%20las%20clases" target="_blank" class="contact-card" style="text-decoration: none; color: inherit;">
                         <i class="fab fa-whatsapp"></i>
                         <div style="flex: 1;">
                             <strong>WhatsApp</strong><br>
                             <span style="color: var(--text-gray);">+54 3755 64-6531</span>
                             <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://wa.me/5493755646531?text=Hola!%20Quiero%20consultar%20sobre%20las%20clases" target="_blank" title="Abrir WhatsApp" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="contact-card">
+                    </a>
+                    <a href="mailto:blowdanceandfitness@gmail.com" class="contact-card" style="text-decoration: none; color: inherit;">
                         <i class="fas fa-envelope"></i>
                         <div style="flex: 1;">
                             <strong>Email</strong><br>
                             <span style="color: var(--text-gray);">blowdanceandfitness@gmail.com</span>
                             <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                                <a href="mailto:blowdanceandfitness@gmail.com" title="Enviar email" style="background: var(--primary-color);"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="contact-card">
                         <i class="fas fa-clock"></i>
                         <div style="flex: 1;">
                             <strong>Horarios</strong><br>
                             <span style="color: var(--text-gray);">Lun - Sáb: Consultar por WhatsApp</span>
-                            <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
