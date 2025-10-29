@@ -93,13 +93,49 @@
 
         /* Hero Section */
         .hero {
-            min-height: 85vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(156, 39, 176, 0.1));
             text-align: center;
-            padding: 5rem 2rem 2rem;
+            padding: 3rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .hero::after {
+            content: 'BLOW DANCE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial Black', sans-serif;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+            z-index: 0;
+            letter-spacing: 8px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
@@ -321,8 +357,7 @@
         .map-container {
             border-radius: 15px;
             overflow: hidden;
-            height: 100%;
-            min-height: 350px;
+            height: 250px;
         }
 
         .map-container iframe {
@@ -517,22 +552,6 @@
                 </div>
             </a>
         </div>
-
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" class="social-btn" title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" class="social-btn" title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="social-btn" title="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="mailto:blowdanceandfitness@gmail.com" class="social-btn" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
     </section>
 
     <!-- Contact Section -->
@@ -589,6 +608,22 @@
 
     <!-- Footer -->
     <footer>
+        <!-- Social Links -->
+        <div class="social-links" style="margin-bottom: 2rem;">
+            <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" class="social-btn" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" class="social-btn" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="social-btn" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="mailto:blowdanceandfitness@gmail.com" class="social-btn" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
         <div class="visitor-counter">
             <p>👥 Visitantes: <span id="counter">0</span></p>
         </div>
