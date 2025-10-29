@@ -316,27 +316,43 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            position: relative;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
         }
 
         .contact-card i {
             font-size: 1.8rem;
             color: var(--primary-color);
+            min-width: 30px;
         }
 
         .contact-card .fa-whatsapp {
             color: #25D366;
         }
 
+        .contact-card span {
+            color: var(--text-gray);
+        }
+
         .contact-card-links {
             display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 15px;
         }
 
         .contact-card-links a {
-            width: 28px;
-            height: 28px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -344,12 +360,12 @@
             background: var(--dark-bg);
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
         }
 
         .contact-card-links a:hover {
-            transform: scale(1.15);
+            transform: translateY(-3px);
         }
 
         .contact-card-links a:hover .fa-facebook-f { color: #1877F2; }
@@ -603,66 +619,31 @@
         <div class="contact-grid">
             <div class="contact-left">
                 <div class="contact-info">
-                    <div class="contact-card">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Erasmie+478,+Oberá,+Misiones+3360" target="_blank" class="contact-card">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div style="flex: 1;">
-                            <strong>Dirección</strong><br>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Erasmie+478,+Oberá,+Misiones+3360" target="_blank" style="color: var(--text-gray); text-decoration: none;">
-                                Erasmie 478, Oberá, Misiones 3360
-                            </a>
-                            <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                        <span>Erasmie 478, Oberá, Misiones 3360</span>
+                    </a>
 
-                    <div class="contact-card">
+                    <a href="https://wa.me/5493755646531?text=Hola!%20Quiero%20consultar%20sobre%20las%20clases" target="_blank" class="contact-card">
                         <i class="fab fa-whatsapp"></i>
-                        <div style="flex: 1;">
-                            <strong>WhatsApp</strong><br>
-                            <a href="https://wa.me/5493755646531?text=Hola!%20Quiero%20consultar%20sobre%20las%20clases" target="_blank" style="color: var(--text-gray); text-decoration: none;">
-                                +54 3755 64-6531
-                            </a>
-                            <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                        <span>+54 3755 64-6531</span>
+                    </a>
 
-                    <div class="contact-card">
+                    <a href="mailto:blowdanceandfitness@gmail.com" class="contact-card">
                         <i class="fas fa-envelope"></i>
-                        <div style="flex: 1;">
-                            <strong>Email</strong><br>
-                            <a href="mailto:blowdanceandfitness@gmail.com" style="color: var(--text-gray); text-decoration: none;">
-                                blowdanceandfitness@gmail.com
-                            </a>
-                            <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                        <span>blowdanceandfitness@gmail.com</span>
+                    </a>
 
                     <div class="contact-card">
                         <i class="fas fa-clock"></i>
-                        <div style="flex: 1;">
-                            <strong>Horarios</strong><br>
-                            <span style="color: var(--text-gray);">Lun - Sáb: Consultar por WhatsApp</span>
-                            <div class="contact-card-links">
-                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            </div>
-                        </div>
+                        <span>Lun - Sáb: Consultar por WhatsApp</span>
+                    </div>
+
+                    <div class="contact-card-links">
+                        <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="qr-container">
