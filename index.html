@@ -57,22 +57,20 @@
             gap: 0.5rem;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transform: rotate(-5deg);
-        }
-
-        .logo-text {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .logo-small {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #8B5CF6, #6366F1, #EC4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            font-size: 0.65rem;
+            color: #ff9800;
+            font-weight: normal;
+            margin-left: 0.3rem;
         }
 
         .nav-links {
@@ -110,27 +108,26 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(233, 30, 99, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
+            width: 600px;
+            height: 600px;
             z-index: 0;
-            opacity: 0.4;
+            opacity: 0.15;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><ellipse cx="200" cy="200" rx="180" ry="160" fill="none" stroke="%238B5CF6" stroke-width="3" opacity="0.6"/><ellipse cx="200" cy="200" rx="200" ry="180" fill="none" stroke="%239C88FF" stroke-width="2" opacity="0.4"/><ellipse cx="200" cy="200" rx="220" ry="200" fill="none" stroke="%236366F1" stroke-width="2" opacity="0.3"/><text x="200" y="170" font-family="Arial Black" font-size="80" font-weight="900" fill="%23EC4899" text-anchor="middle" opacity="0.2">BLOW</text><text x="200" y="240" font-family="Arial" font-size="40" fill="%23ff9800" text-anchor="middle" opacity="0.2">DANCE</text></svg>') center/contain no-repeat;
         }
 
         .hero::after {
-            content: 'BLOW DANCE';
+            content: 'ESPACIO CREATIVO';
             position: absolute;
-            top: 50%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: 'Arial Black', sans-serif;
-            font-size: 120px;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            color: #ff9800;
+            opacity: 0.1;
             white-space: nowrap;
             z-index: 0;
-            letter-spacing: 8px;
+            letter-spacing: 4px;
         }
 
         .hero-content {
@@ -319,6 +316,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            position: relative;
         }
 
         .contact-card i {
@@ -329,6 +327,35 @@
         .contact-card .fa-whatsapp {
             color: #25D366;
         }
+
+        .contact-card-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .contact-card-links a {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .contact-card-links a:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-card-links .fa-facebook:hover { background: #1877F2; }
+        .contact-card-links .fa-instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .contact-card-links .fa-youtube:hover { background: #FF0000; }
+        .contact-card-links .fa-tiktok:hover { background: #000000; }
 
         .qr-container {
             background: var(--card-bg);
@@ -471,8 +498,8 @@
     <header>
         <nav>
             <div class="logo">
-                <div class="logo-icon">💃</div>
-                <span class="logo-text">BLOW DANCE</span>
+                <span class="logo-small">BLOW DANCE</span>
+                <span class="logo-subtitle">ESPACIO CREATIVO</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
@@ -562,30 +589,54 @@
                 <div class="contact-info">
                     <div class="contact-card">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
+                        <div style="flex: 1;">
                             <strong>Dirección</strong><br>
                             <span style="color: var(--text-gray);">Erasmie 478, Oberá, Misiones 3360</span>
+                            <div class="contact-card-links">
+                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="contact-card">
                         <i class="fab fa-whatsapp"></i>
-                        <div>
+                        <div style="flex: 1;">
                             <strong>WhatsApp</strong><br>
                             <span style="color: var(--text-gray);">+54 3755 64-6531</span>
+                            <div class="contact-card-links">
+                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="contact-card">
                         <i class="fas fa-envelope"></i>
-                        <div>
+                        <div style="flex: 1;">
                             <strong>Email</strong><br>
                             <span style="color: var(--text-gray);">blowdanceandfitness@gmail.com</span>
+                            <div class="contact-card-links">
+                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="contact-card">
                         <i class="fas fa-clock"></i>
-                        <div>
+                        <div style="flex: 1;">
                             <strong>Horarios</strong><br>
                             <span style="color: var(--text-gray);">Lun - Sáb: Consultar por WhatsApp</span>
+                            <div class="contact-card-links">
+                                <a href="https://www.facebook.com/BlowDance/?locale=es_ES" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/blow.dance/?hl=es" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.tiktok.com/@blow.dance" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -618,6 +669,9 @@
             </a>
             <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="social-btn" title="YouTube">
                 <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@blow.dance" target="_blank" class="social-btn" title="TikTok">
+                <i class="fab fa-tiktok"></i>
             </a>
             <a href="mailto:blowdanceandfitness@gmail.com" class="social-btn" title="Email">
                 <i class="fas fa-envelope"></i>
