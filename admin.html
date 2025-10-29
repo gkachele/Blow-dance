@@ -239,7 +239,9 @@
                 <h3>🎵 Hip-Hop</h3>
                 <div class="form-group">
                     <label>Link del video</label>
-                    <input type="url" id="hiphop-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ">
+                    <input type="url" id="hiphop-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('hiphop')">
+                    <button onclick="previewVideo('hiphop')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
+                    <div id="hiphop-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
                 </div>
             </div>
 
@@ -247,7 +249,9 @@
                 <h3>🌊 Danza Contemporánea</h3>
                 <div class="form-group">
                     <label>Link del video</label>
-                    <input type="url" id="contemporanea-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ">
+                    <input type="url" id="contemporanea-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('contemporanea')">
+                    <button onclick="previewVideo('contemporanea')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
+                    <div id="contemporanea-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
                 </div>
             </div>
 
@@ -255,7 +259,9 @@
                 <h3>🩰 Ballet Clásico</h3>
                 <div class="form-group">
                     <label>Link del video</label>
-                    <input type="url" id="ballet-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ">
+                    <input type="url" id="ballet-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('ballet')">
+                    <button onclick="previewVideo('ballet')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
+                    <div id="ballet-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
                 </div>
             </div>
 
@@ -263,7 +269,9 @@
                 <h3>👶 Clases para Niños</h3>
                 <div class="form-group">
                     <label>Link del video</label>
-                    <input type="url" id="ninos-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ">
+                    <input type="url" id="ninos-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('ninos')">
+                    <button onclick="previewVideo('ninos')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
+                    <div id="ninos-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
                 </div>
             </div>
 
@@ -308,6 +316,51 @@
             // Aquí cargaríamos los links actuales desde el index.html
             // Por ahora dejamos los campos vacíos para que la clienta los llene
             console.log('Panel cargado correctamente');
+        }
+
+        function previewVideo(type) {
+            const input = document.getElementById(`${type}-link`);
+            const previewDiv = document.getElementById(`${type}-preview`);
+            const videoLink = input.value.trim();
+            
+            if (!videoLink) {
+                previewDiv.innerHTML = '';
+                return;
+            }
+            
+            let embed = '';
+            
+            if (videoLink.includes('youtube.com') || videoLink.includes('youtu.be')) {
+                // Extraer ID del video de YouTube
+                let videoId = '';
+                if (videoLink.includes('watch?v=')) {
+                    videoId = videoLink.split('watch?v=')[1].split('&')[0];
+                } else if (videoLink.includes('youtu.be/')) {
+                    videoId = videoLink.split('youtu.be/')[1].split('?')[0];
+                } else if (videoLink.includes('/embed/')) {
+                    videoId = videoLink.split('/embed/')[1].split('?')[0];
+                }
+                
+                if (videoId) {
+                    embed = `<iframe width="100%" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 10px;"></iframe>`;
+                } else {
+                    embed = `<p style="color: var(--error);">❌ Link de YouTube inválido</p>`;
+                }
+            } else if (videoLink.includes('tiktok.com')) {
+                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
+                    <i class="fab fa-tiktok"></i> Ver en TikTok
+                </a>`;
+            } else if (videoLink.includes('instagram.com')) {
+                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
+                    <i class="fab fa-instagram"></i> Ver en Instagram
+                </a>`;
+            } else {
+                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
+                    Ver contenido
+                </a>`;
+            }
+            
+            previewDiv.innerHTML = embed;
         }
 
         async function saveChanges() {
