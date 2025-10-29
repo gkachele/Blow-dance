@@ -52,6 +52,24 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transform: rotate(-5deg);
+        }
+
+        .logo-text {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -417,7 +435,10 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">BLOW DANCE</div>
+            <div class="logo">
+                <div class="logo-icon">💃</div>
+                <span class="logo-text">BLOW DANCE</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
@@ -455,29 +476,6 @@
     <!-- Videos Section -->
     <section class="section" id="videos">
         <h2 class="section-title">Nuestras Clases</h2>
-        
-        <!-- Latest Video Showcase -->
-        <div style="max-width: 900px; margin: 0 auto 3rem; background: var(--card-bg); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem;">🎥 Último Video</h3>
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
-                <iframe 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                    src="https://www.youtube.com/embed/LATEST_VIDEO_ID?start=0&end=10&autoplay=0" 
-                    title="Últimas clases de Blow Dance" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <p style="text-align: center; margin-top: 1rem; color: var(--text-gray);">
-                📱 Ver completo en: 
-                <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" style="color: var(--primary-color); text-decoration: none;">YouTube</a> | 
-                <a href="https://www.instagram.com/blow.dance/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Instagram</a>
-            </p>
-        </div>
-
-        <!-- Classes Grid -->
-        <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.8rem;">📚 Nuestros Estilos</h3>
         <div class="videos-grid">
             <a href="https://www.instagram.com/blow.dance/" target="_blank" class="video-card">
                 <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&h=300&fit=crop');">
