@@ -212,18 +212,25 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
+            align-items: start;
         }
 
-        .contact-info {
+        .contact-left {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
 
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
         .contact-card {
             background: var(--card-bg);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -231,14 +238,43 @@
         }
 
         .contact-card i {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
+        }
+
+        .contact-card .fa-whatsapp {
+            color: #25D366;
+        }
+
+        .qr-container {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .qr-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        .qr-container h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .qr-container p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
         }
 
         .map-container {
             border-radius: 15px;
             overflow: hidden;
-            height: 400px;
+            height: 100%;
+            min-height: 350px;
         }
 
         .map-container iframe {
@@ -478,34 +514,41 @@
     <section class="section" id="contacto">
         <h2 class="section-title">Contacto</h2>
         <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Dirección</h3>
-                        <p>Erasmie 478, Oberá, Misiones 3360, Argentina</p>
+            <div class="contact-left">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Dirección</strong><br>
+                            <span style="color: var(--text-gray);">Erasmie 478, Oberá, Misiones 3360</span>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong><br>
+                            <span style="color: var(--text-gray);">+54 3755 64-6531</span>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <span style="color: var(--text-gray);">blowdanceandfitness@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horarios</strong><br>
+                            <span style="color: var(--text-gray);">Lun - Sáb: Consultar por WhatsApp</span>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-card">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h3>Teléfono</h3>
-                        <p>+54 3755 64-6531</p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <p>blowdanceandfitness@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Horarios</h3>
-                        <p>Lun - Sáb: Consultar por WhatsApp</p>
-                    </div>
+                <div class="qr-container">
+                    <h3>📱 Escaneá el QR</h3>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blowdance.duckdns.org" alt="QR Code">
+                    <p>Guardá nuestra página</p>
                 </div>
             </div>
             <div class="map-container">
