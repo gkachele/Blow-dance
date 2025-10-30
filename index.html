@@ -276,6 +276,48 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         }
 
+        .video-embed {
+            width: 100%;
+            min-height: 200px;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.2), rgba(156, 39, 176, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .video-embed a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .video-embed a:hover {
+            transform: scale(1.05);
+        }
+
+        .video-embed .default-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.6), rgba(156, 39, 176, 0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
         .video-info {
             padding: 1.5rem;
         }
@@ -602,45 +644,41 @@
     <section class="section" id="videos">
         <h2 class="section-title">Nuestras Clases</h2>
         <div class="videos-grid">
-            <a href="https://www.instagram.com/blow.dance/" target="_blank" class="video-card">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500&h=300&fit=crop');">
-                    <i class="fas fa-play-circle"></i>
-                </div>
+            <!-- Hip-Hop -->
+            <div class="video-card" id="card-hiphop">
+                <div id="video-hiphop" class="video-embed"></div>
                 <div class="video-info">
                     <h3>Clases de Hip-Hop</h3>
                     <p>Movimientos urbanos y energía pura</p>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://www.instagram.com/blow.dance/" target="_blank" class="video-card">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1545128485-c400e7702796?w=500&h=300&fit=crop');">
-                    <i class="fas fa-play-circle"></i>
-                </div>
+            <!-- Danza Contemporánea -->
+            <div class="video-card" id="card-contemporanea">
+                <div id="video-contemporanea" class="video-embed"></div>
                 <div class="video-info">
                     <h3>Danza Contemporánea</h3>
                     <p>Expresión y creatividad sin límites</p>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="video-card">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=500&h=300&fit=crop');">
-                    <i class="fas fa-play-circle"></i>
-                </div>
+            <!-- Ballet Clásico -->
+            <div class="video-card" id="card-ballet">
+                <div id="video-ballet" class="video-embed"></div>
                 <div class="video-info">
                     <h3>Ballet Clásico</h3>
                     <p>Técnica y elegancia para todas las edades</p>
                 </div>
-            </a>
+            </div>
 
-            <a href="https://www.youtube.com/@blowdance.espaciocreativo" target="_blank" class="video-card">
-                <div class="video-thumbnail" style="background-image: url('https://images.unsplash.com/photo-1547153760-18fc86324498?w=500&h=300&fit=crop');">
-                    <i class="fas fa-play-circle"></i>
-                </div>
+            <!-- Clases para Niños -->
+            <div class="video-card" id="card-ninos">
+                <div id="video-ninos" class="video-embed"></div>
                 <div class="video-info">
                     <h3>Clases para Niños</h3>
                     <p>Diversión y aprendizaje desde temprana edad</p>
                 </div>
-            </a>
+            </div>
         </div>
     </section>
 
@@ -780,6 +818,64 @@
 
         // Cargar video al inicio
         loadVideoSemana();
+
+        // Cargar videos de clases desde localStorage
+        function loadClassVideos() {
+            const classes = ['hiphop', 'contemporanea', 'ballet', 'ninos'];
+            
+            classes.forEach(className => {
+                const videoData = localStorage.getItem(`blow_video_${className}`);
+                const embedDiv = document.getElementById(`video-${className}`);
+                
+                if (!videoData || !embedDiv) {
+                    // Mostrar thumbnail por defecto
+                    embedDiv.innerHTML = '<div class="default-thumbnail"><i class="fas fa-play-circle"></i></div>';
+                    return;
+                }
+                
+                const video = JSON.parse(videoData);
+                let embed = '';
+                
+                if (video.platform === 'youtube' && video.url) {
+                    // Extraer ID del video de YouTube
+                    let videoId = '';
+                    if (video.url.includes('watch?v=')) {
+                        videoId = video.url.split('watch?v=')[1].split('&')[0];
+                    } else if (video.url.includes('youtu.be/')) {
+                        videoId = video.url.split('youtu.be/')[1].split('?')[0];
+                    } else if (video.url.includes('/embed/')) {
+                        videoId = video.url.split('/embed/')[1].split('?')[0];
+                    }
+                    
+                    if (videoId) {
+                        embed = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
+                    } else {
+                        embed = '<div class="default-thumbnail"><i class="fas fa-play-circle"></i></div>';
+                    }
+                } else if (video.url) {
+                    // Para TikTok, Instagram u otros
+                    let iconClass = 'fas fa-video';
+                    let buttonText = 'Ver Video';
+                    
+                    if (video.url.includes('tiktok.com')) {
+                        iconClass = 'fab fa-tiktok';
+                        buttonText = 'Ver en TikTok';
+                    } else if (video.url.includes('instagram.com')) {
+                        iconClass = 'fab fa-instagram';
+                        buttonText = 'Ver en Instagram';
+                    }
+                    
+                    embed = `<a href="${video.url}" target="_blank"><i class="${iconClass}"></i> ${buttonText}</a>`;
+                } else {
+                    embed = '<div class="default-thumbnail"><i class="fas fa-play-circle"></i></div>';
+                }
+                
+                embedDiv.innerHTML = embed;
+            });
+        }
+
+        // Cargar videos de clases al inicio
+        loadClassVideos();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
