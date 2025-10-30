@@ -262,6 +262,9 @@
         // Contraseña configurada (cambiar por una segura)
         const ADMIN_PASSWORD = 'blowdance2025';
 
+        // Rama actual (para separar storage entre ramas)
+        const BRANCH_PREFIX = 'v1_'; // Cambiar a '' en main
+
         // GitHub config
         const GITHUB_TOKEN = 'TU_GITHUB_TOKEN_AQUI'; // Lo configuramos después
         const REPO_OWNER = 'gkachele';
@@ -295,7 +298,7 @@
             const classes = ['hiphop', 'contemporanea', 'ballet', 'ninos'];
             
             classes.forEach(className => {
-                const videoData = localStorage.getItem(`blow_video_${className}`);
+                const videoData = localStorage.getItem(`${BRANCH_PREFIX}blow_video_${className}`);
                 if (videoData) {
                     const video = JSON.parse(videoData);
                     const input = document.getElementById(`${className}-link`);
@@ -386,7 +389,7 @@
                         timestamp: new Date().toISOString()
                     };
 
-                    localStorage.setItem(`blow_video_${clase.id}`, JSON.stringify(videoData));
+                    localStorage.setItem(`${BRANCH_PREFIX}blow_video_${clase.id}`, JSON.stringify(videoData));
                     savedCount++;
                 }
             });

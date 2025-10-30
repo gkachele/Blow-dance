@@ -764,6 +764,9 @@
 
     <script src="https://pagecounter.io/js/pagecounter.js" defer></script>
     <script>
+        // Rama actual (para separar storage entre ramas)
+        const BRANCH_PREFIX = 'v1_'; // Cambiar a '' en main
+
         // PageCounter API - Real visitor counter
         // Registrate en https://pagecounter.io para obtener tu ID
         // Reemplaza 'TU_ID_DE_CONTADOR' con el ID que te dan
@@ -784,7 +787,7 @@
 
         // Video de la semana - Load from localStorage
         function loadVideoSemana() {
-            const videoData = localStorage.getItem('blow_video_semana');
+            const videoData = localStorage.getItem(`${BRANCH_PREFIX}blow_video_semana`);
             if (!videoData) {
                 document.getElementById('no-video-msg').style.display = 'block';
                 return;
@@ -824,7 +827,7 @@
             const classes = ['hiphop', 'contemporanea', 'ballet', 'ninos'];
             
             classes.forEach(className => {
-                const videoData = localStorage.getItem(`blow_video_${className}`);
+                const videoData = localStorage.getItem(`${BRANCH_PREFIX}blow_video_${className}`);
                 const embedDiv = document.getElementById(`video-${className}`);
                 
                 if (!videoData || !embedDiv) {
