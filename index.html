@@ -685,7 +685,7 @@
         </div>
         
         <div class="visitor-counter">
-            <p>👥 Visitantes: <span id="counter">0</span></p>
+            <p>👥 Visitantes: <span id="counter">Loading...</span></p>
         </div>
         <p>&copy; 2025 Blow Dance - Espacio Creativo. Todos los derechos reservados.</p>
         <div class="gkachele-brand">
@@ -693,12 +693,25 @@
     </div>
     </footer>
 
+    <script src="https://pagecounter.io/js/pagecounter.js" defer></script>
     <script>
-        // Simple visitor counter (localStorage)
-        let visits = localStorage.getItem('blowdance_visits') || 0;
-        visits = parseInt(visits) + 1;
-        localStorage.setItem('blowdance_visits', visits);
-        document.getElementById('counter').textContent = visits;
+        // PageCounter API - Real visitor counter
+        // Registrate en https://pagecounter.io para obtener tu ID
+        // Reemplaza 'TU_ID_DE_CONTADOR' con el ID que te dan
+        window.addEventListener('load', function() {
+            fetch('https://api.pagecounter.io/v1/TU_ID_DE_CONTADOR/increment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('counter').textContent = data.count || 0;
+            })
+            .catch(error => {
+                console.error('Error al cargar contador:', error);
+                document.getElementById('counter').textContent = '...';
+            });
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
