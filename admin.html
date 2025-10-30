@@ -225,57 +225,35 @@
             <div class="instructions">
                 <h3>📝 Instrucciones:</h3>
                 <ol>
-                    <li>Subí tu video a <strong>Instagram</strong> o <strong>YouTube</strong></li>
+                    <li>Subí tu video a <strong>YouTube</strong> o <strong>TikTok</strong></li>
                     <li>Copiá el link del post/video</li>
-                    <li>Pegá el link en el campo correspondiente</li>
-                    <li>Hacé click en <strong>"Guardar Cambios"</strong></li>
-                    <li>¡La página se actualiza automáticamente!</li>
+                    <li>Pegá el link abajo</li>
+                    <li>Hacé click en <strong>"Guardar"</strong></li>
+                    <li>¡El video aparece en la página automáticamente!</li>
                 </ol>
             </div>
 
             <div id="alerts"></div>
 
             <div class="video-card-editor">
-                <h3>🎵 Hip-Hop</h3>
+                <h3>🎥 Video de la Semana</h3>
+                <div class="form-group">
+                    <label>Plataforma</label>
+                    <select id="platform-select" style="padding: 1rem; background: var(--dark-bg); border: 2px solid transparent; border-radius: 10px; color: var(--text-light); font-size: 1rem; width: 100%;" onchange="updatePlaceholder()">
+                        <option value="">Seleccioná la plataforma</option>
+                        <option value="youtube">📺 YouTube</option>
+                        <option value="tiktok">🎵 TikTok</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label>Link del video</label>
-                    <input type="url" id="hiphop-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('hiphop')">
-                    <button onclick="previewVideo('hiphop')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
-                    <div id="hiphop-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
+                    <input type="url" id="video-link" placeholder="Seleccioná primero la plataforma">
+                    <button onclick="previewVideo()" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
+                    <div id="video-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
                 </div>
             </div>
 
-            <div class="video-card-editor">
-                <h3>🌊 Danza Contemporánea</h3>
-                <div class="form-group">
-                    <label>Link del video</label>
-                    <input type="url" id="contemporanea-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('contemporanea')">
-                    <button onclick="previewVideo('contemporanea')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
-                    <div id="contemporanea-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div class="video-card-editor">
-                <h3>🩰 Ballet Clásico</h3>
-                <div class="form-group">
-                    <label>Link del video</label>
-                    <input type="url" id="ballet-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('ballet')">
-                    <button onclick="previewVideo('ballet')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
-                    <div id="ballet-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <div class="video-card-editor">
-                <h3>👶 Clases para Niños</h3>
-                <div class="form-group">
-                    <label>Link del video</label>
-                    <input type="url" id="ninos-link" placeholder="https://www.instagram.com/p/ABC123/ o https://www.youtube.com/watch?v=XYZ" onblur="previewVideo('ninos')">
-                    <button onclick="previewVideo('ninos')" class="btn" style="margin-top: 0.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem;">👁️ Ver Preview</button>
-                    <div id="ninos-preview" style="margin-top: 1rem; min-height: 50px; padding: 1rem; background: var(--dark-bg); border-radius: 10px;"></div>
-                </div>
-            </div>
-
-            <button onclick="saveChanges()" class="btn" id="saveBtn">💾 Guardar Cambios</button>
+            <button onclick="saveVideo()" class="btn" id="saveBtn">💾 Guardar Video</button>
             <button onclick="logout()" class="btn logout-btn">🚪 Cerrar Sesión</button>
         </div>
     </div>
@@ -313,15 +291,39 @@
         }
 
         function loadCurrentLinks() {
-            // Aquí cargaríamos los links actuales desde el index.html
-            // Por ahora dejamos los campos vacíos para que la clienta los llene
-            console.log('Panel cargado correctamente');
+            // Cargar video actual desde localStorage
+            const videoData = localStorage.getItem('blow_video_semana');
+            if (videoData) {
+                const video = JSON.parse(videoData);
+                document.getElementById('platform-select').value = video.platform;
+                document.getElementById('video-link').value = video.url;
+                updatePlaceholder();
+                previewVideo();
+            }
         }
 
-        function previewVideo(type) {
-            const input = document.getElementById(`${type}-link`);
-            const previewDiv = document.getElementById(`${type}-preview`);
-            const videoLink = input.value.trim();
+        function updatePlaceholder() {
+            const platform = document.getElementById('platform-select').value;
+            const input = document.getElementById('video-link');
+            
+            if (platform === 'youtube') {
+                input.placeholder = 'https://www.youtube.com/watch?v=ABC123';
+            } else if (platform === 'tiktok') {
+                input.placeholder = 'https://www.tiktok.com/@usuario/video/123456';
+            } else {
+                input.placeholder = 'Seleccioná primero la plataforma';
+            }
+        }
+
+        function previewVideo() {
+            const platform = document.getElementById('platform-select').value;
+            const videoLink = document.getElementById('video-link').value.trim();
+            const previewDiv = document.getElementById('video-preview');
+            
+            if (!platform) {
+                previewDiv.innerHTML = '<p style="color: var(--error);">❌ Seleccioná una plataforma primero</p>';
+                return;
+            }
             
             if (!videoLink) {
                 previewDiv.innerHTML = '';
@@ -330,7 +332,7 @@
             
             let embed = '';
             
-            if (videoLink.includes('youtube.com') || videoLink.includes('youtu.be')) {
+            if (platform === 'youtube') {
                 // Extraer ID del video de YouTube
                 let videoId = '';
                 if (videoLink.includes('watch?v=')) {
@@ -342,35 +344,34 @@
                 }
                 
                 if (videoId) {
-                    embed = `<iframe width="100%" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 10px;"></iframe>`;
+                    embed = `<iframe width="100%" height="300" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 10px;"></iframe>`;
                 } else {
                     embed = `<p style="color: var(--error);">❌ Link de YouTube inválido</p>`;
                 }
-            } else if (videoLink.includes('tiktok.com')) {
-                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
-                    <i class="fab fa-tiktok"></i> Ver en TikTok
-                </a>`;
-            } else if (videoLink.includes('instagram.com')) {
-                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
-                    <i class="fab fa-instagram"></i> Ver en Instagram
-                </a>`;
-            } else {
-                embed = `<a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none; margin-top: 1rem;">
-                    Ver contenido
-                </a>`;
+            } else if (platform === 'tiktok') {
+                embed = `<div style="text-align: center; padding: 2rem;">
+                    <i class="fab fa-tiktok" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <p style="margin-bottom: 1rem;">Preview de TikTok</p>
+                    <a href="${videoLink}" target="_blank" style="display: inline-block; padding: 1rem 2rem; background: var(--primary-color); color: white; border-radius: 10px; text-decoration: none;">
+                        <i class="fab fa-tiktok"></i> Ver en TikTok
+                    </a>
+                </div>`;
             }
             
             previewDiv.innerHTML = embed;
         }
 
-        async function saveChanges() {
-            const hiphopLink = document.getElementById('hiphop-link').value;
-            const contemporaneaLink = document.getElementById('contemporanea-link').value;
-            const balletLink = document.getElementById('ballet-link').value;
-            const ninosLink = document.getElementById('ninos-link').value;
+        function saveVideo() {
+            const platform = document.getElementById('platform-select').value;
+            const videoLink = document.getElementById('video-link').value.trim();
 
-            if (!hiphopLink && !contemporaneaLink && !balletLink && !ninosLink) {
-                showAlert('⚠️ Completá al menos un link', 'error');
+            if (!platform) {
+                showAlert('⚠️ Seleccioná una plataforma', 'error');
+                return;
+            }
+
+            if (!videoLink) {
+                showAlert('⚠️ Pegá el link del video', 'error');
                 return;
             }
 
@@ -378,13 +379,20 @@
             saveBtn.disabled = true;
             saveBtn.textContent = '⏳ Guardando...';
 
-            // Aquí iría la lógica para actualizar el index.html vía GitHub API
-            // Por ahora simulamos el guardado
+            // Guardar en localStorage
+            const videoData = {
+                platform: platform,
+                url: videoLink,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('blow_video_semana', JSON.stringify(videoData));
+
             setTimeout(() => {
-                showAlert('✅ ¡Cambios guardados! La página se actualizará en unos segundos.', 'success');
+                showAlert('✅ ¡Video guardado! Abrí la página principal para verlo.', 'success');
                 saveBtn.disabled = false;
-                saveBtn.textContent = '💾 Guardar Cambios';
-            }, 2000);
+                saveBtn.textContent = '💾 Guardar Video';
+            }, 1000);
         }
 
         function showAlert(message, type) {
